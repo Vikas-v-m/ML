@@ -1,0 +1,20 @@
+import pandas as pd
+from sklearn.datasets import load_iris
+from sklearn.impute import SimpleImputer
+from sklearn.preprocessing import StandardScaler
+
+iris = load_iris()
+iris_df = pd.DataFrame(data=iris.data, columns=iris.feature_names)
+iris_df['target'] = iris.target
+
+def preprocess_dataset(df):
+    df.iloc[:10, 0] = float('NaN')
+    imputer = SimpleImputer(strategy='mean')
+    df[df.columns] = imputer.fit_transform(df[df.columns])
+    scaler = StandardScaler()
+    df[df.columns[:-1]] = scaler.fit_transform(df[df.columns[:-1]])
+    return df
+
+preprocessed_df = preprocess_dataset(iris_df)
+print("Preprocessed dataset:")
+print(preprocessed_df.head())
