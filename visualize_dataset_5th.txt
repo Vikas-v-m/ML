@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 def visualize_dataset(file_path):
-    df = pd.read_csv("/content/iris.csv")
+    df = pd.read_csv("/content/Iris.csv")
     
     sns.pairplot(df)
     plt.title("Pairplot of the Dataset")
@@ -18,5 +18,5 @@ def visualize_dataset(file_path):
     else:
         print("No categorical column found to plot bar chart.")
 
-file_path = 'iris.csv'
-visualize_dataset("/content/iris.csv")
+file_path = 'Iris.csv'
+visualize_dataset("/content/Iris.csv")
